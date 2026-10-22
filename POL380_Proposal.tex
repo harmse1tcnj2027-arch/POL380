@@ -53,17 +53,17 @@ More political parties causes increased protectionism
 
 \section{Proposed Sources}
 
-\subsection{Ehrlich 2007 \citep{Ehrlich2007} } 
+\subsection{Access to Protection: Domestic Institutions and Trade Policy in Democracies \citep{Ehrlich2007} } 
 
-\noindent \textcolor{red}{Summarize methods and findings}
+Sean Ehrlich's 2007 paper ``Access to Protection: Domestic Institutions and Trade Policy in Democracies'' tests various hypotheses regarding the causes of protectionism. He hypothesizes that more electoral districts, more political parties, low party discipline, bicameralism, presidentialism, and left-wing governments all lead towards increased protectionism. Using linear regression, Ehrlich determined that all hypotheses were true, except for the hypothesis that bicameralism causes increased protectionism, which was found false. \textcolor{red}{What about low party discipline? Not in class notes --> check paper itself.} Ehrlich also discusses access points, which refer to a policymaker susceptible to lobbying. Ehrlich argues that an increase in access points leads to an increase in protectionism. 
 
-\subsection{\textcolor{red}{Find similar to Ehrlich}}
+\subsection{\textcolor{red}{Possibly: Trade Protectionism: Reasons and Outcomes \citep{Abboushi2010}}}
 
 \subsection{\textcolor{red}{Another similar paper to Ehrlich, find one}}
 
 \subsection{\textcolor{red}{Double ML paper \citep{DML}, also maybe python documentation}}
 
-\subsection{\textcolor{red}{A paper or three on impacts of protectionism}}
+\subsection{\textcolor{red}{Possibly: Why Trade, and What Would be the Consequences of Protectionism? \citep{JeanReshef2017}}}
 
 %%%%%%%%%%%%%%%% Existing Analysis  %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -75,9 +75,7 @@ More political parties causes increased protectionism
 
 \section{Proposed Data and Methods}
 
-Data on tariff rates, exports, unemployment rates, GDP, and inflation \textcolor{red}{CITE each dataset -- wrote down link to each in google doc} were obtained from World Bank Group \textcolor{red}{CITE}, and data on the number of political parties was obtained from Varieties of Democracy \textcolor{red}{CITE both specific dataset and V-Dem}. \\
-
-\noindent The required data reduction and cleaning is complete. A simple Python program was written to pull the data needed from each dataset, and add the data to one large .csv file \textcolor{red}{could maybe describe in more detail exactly what I did, though it was less painful here than for PHY466 project. Might be best to just link GitHub so anyone interested in what I did can find it there.} \\
+Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} were obtained from World Bank Group, and data on the number of political parties \citep{NoPartiesData} was obtained from Varieties of Democracy \textcolor{red}{Re-word this, sounds ridiculous since all the citations show where the data comes from.} The required data reduction and cleaning is complete. A simple Python program \textcolor{red}{CITE and/or link to my GitHub} was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in table 1. \\
 
 \begin{center}
 \begin{table}[h]
@@ -92,7 +90,7 @@ ALB & 2000 & 19.53 & 19.023 & 1160.42 & 6.15e9 & 0.05 & 2.87 & 11.65 \\
 ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\ 
 \hline
 \end{tabular} }
-\caption{Orbital parameters of NEA 162142}
+\caption{Dataset that will be used for double machine learning. Country and Year are for reference \textcolor{red}{though it may be interesting to look at each country's level of protectionism over time}, year, \% exports, unemployment rate, GDP/capita, GDP in US\$, inflation rate, and number of political parties are independent variables, tariff rate is the dependent variable.}
 \end{table}
 \end{center}
 
@@ -114,9 +112,23 @@ ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\
 
 \section{Conclusion}
 
+%%%%%%%%%%%%%%%% Notes %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Notes}
+
+\begin{itemize}
+	\item Check DML Paper citation --> May be linking to ArXiv, find actual publication if so
+	\item Is JeanReshef2017 peer reviewed? Double check.
+	\item Check years for World Bank data and V-Dem data 
+	\item This will be more than 3 pages --> check with Prof. Toloudis. 
+	\begin{itemize}
+		\item Maybe can cut sections on impact of protectionism and causes of protectionism since those will be summarized throughout section 2. 
+	\end{itemize}
+\end{itemize}
+
 %%%%%%%%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%
 
-\bibliographystyle{APSA}
+\bibliographystyle{apsa-leeper}
 \bibliography{POL380_Proposal}
 
 \end{document}
