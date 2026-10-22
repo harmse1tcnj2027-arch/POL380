@@ -1,0 +1,122 @@
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[proposal]{POL380}   % paper: [paper]
+\usepackage{natbib} % For bibliography 
+
+%%%%%%%%%%%%%%%% Title and Heading  %%%%%%%%%%%%%%%%%%%%%%%
+
+\papertitle{Identifying the Causes of Protectionism using Double Machine Learning }
+\paperauthor{Emily Harms}
+\paperaffil{The College of New Jersey}
+\paperdate{\today}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%  Topic Description  %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proposed Topic}
+
+
+Why do some democracies protect domestic producers more than others? I aim to study whether factors such as 
+exports, unemployment rates, GDP, inflation rates, and the number of political parties causally shape how protectionist a country's trade policy is. Using a panel of many countries spanning several decades, I will estimate the effect of each factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}. 
+
+\paragraph{Research Question:} \textit{Which domestic factors cause countries to adopt more protectionist trade policy, and how robust are these effects?} \\
+
+\noindent This analysis aims to build upon prior analyses such as \textcolor{red}{\citep{Ehrlich2007} and similar, CITE}. Prior analyses have used linear regression to evaluate the causes of protectionism. I propose to use double machine learning to validate the results of \textcolor{red}{\citep{Ehrlich2007}  and similar, CITE}, creating a second avenue to test causal relationships in political science. \\
+
+\noindent This analysis aims to test the following hypotheses: \textcolor{red}{write a little more on why each is expected and why alternate would not be expected}
+
+\begin{hypothesis}[Exports]
+Exports being a higher percentage of GDP \textcolor{red}{increases/decreases -- which makes more sense?} protectionism. 
+\end{hypothesis}
+
+\begin{hypothesis}[Unemployment]
+Increased unemployment rates cause increased protectionism.
+\end{hypothesis}
+
+\begin{hypothesis}[GDP]
+Increased GDP per capita and total GPD in US\$ \textcolor{red}{I have data for both -- combine or separate into two hypotheses?} cause \textcolor{red}{increased or decreased?} protectionism.
+\end{hypothesis} 
+
+\begin{hypothesis}[Inflation]
+Increased inflation rates cause increased protectionism.
+\end{hypothesis} 
+
+\begin{hypothesis}[Number of Political Parties]
+More political parties causes increased protectionism
+\end{hypothesis} 
+
+\noindent For the sake of this analysis, the level of protectionism will be quantified using tariff rates \textcolor{red}{explain why this is a reasonable thing to do.} In other words, higher tariff rates mean higher levels of protectionism, and vice versa. 
+
+%%%%%%%%%%%%%%%% Sources %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proposed Sources}
+
+\subsection{Ehrlich 2007 \citep{Ehrlich2007} } 
+
+\noindent \textcolor{red}{Summarize methods and findings}
+
+\subsection{\textcolor{red}{Find similar to Ehrlich}}
+
+\subsection{\textcolor{red}{Another similar paper to Ehrlich, find one}}
+
+\subsection{\textcolor{red}{Double ML paper \citep{DML}, also maybe python documentation}}
+
+\subsection{\textcolor{red}{A paper or three on impacts of protectionism}}
+
+%%%%%%%%%%%%%%%% Existing Analysis  %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Existing Analysis}
+
+\textcolor{red}{More in depth summary of Ehrlich2007 and similar papers} 
+
+%%%%%%%%%%%%%%%% Data and Methods %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proposed Data and Methods}
+
+Data on tariff rates, exports, unemployment rates, GDP, and inflation \textcolor{red}{CITE each dataset -- wrote down link to each in google doc} were obtained from World Bank Group \textcolor{red}{CITE}, and data on the number of political parties was obtained from Varieties of Democracy \textcolor{red}{CITE both specific dataset and V-Dem}. \\
+
+\noindent The required data reduction and cleaning is complete. A simple Python program was written to pull the data needed from each dataset, and add the data to one large .csv file \textcolor{red}{could maybe describe in more detail exactly what I did, though it was less painful here than for PHY466 project. Might be best to just link GitHub so anyone interested in what I did can find it there.} \\
+
+\begin{center}
+\begin{table}[h]
+\makebox[\textwidth]{
+\begin{tabular}{c c c c c c c c c c}
+\hline\hline
+Country & Year & \% Exports & Unemp. & GDP/Capita & GDP (US\$) & Inflation & No. Parties & Tariff  \\ [0.5ex]
+\hline
+ALB & 1997 & 10.04 & 16.874 & 728.55 & 4.71e9 & 33.18 & 2.87 & 14.41 \\
+ALB & 2000 & 19.53 & 19.023 & 1160.42 & 6.15e9 & 0.05 & 2.87 & 11.65 \\
+... & ... & ... & ... & ... & ... & ... & ... &  \\
+ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\ 
+\hline
+\end{tabular} }
+\caption{Orbital parameters of NEA 162142}
+\end{table}
+\end{center}
+
+\noindent \textcolor{red}{Explain DML in detail, say how it works, which algorithms specifically, why those algorithms (likely random forest and neural networks)}  
+
+
+
+
+
+%%%%%%%%%%%%%%%% Preliminary Results %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Preliminary Results}
+
+%%%%%%%%%%%%%%%% Impacts of Protectionism  %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Impact of Protectionism}
+
+%%%%%%%%%%%%%%%% Conclusion  %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+%%%%%%%%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{APSA}
+\bibliography{POL380_Proposal}
+
+\end{document}
