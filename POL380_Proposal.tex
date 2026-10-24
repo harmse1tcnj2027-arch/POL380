@@ -17,65 +17,37 @@
 
 \section{Proposed Topic}
 
-
 Why do some democracies protect domestic producers more than others? I aim to study whether factors such as 
-exports, unemployment rates, GDP, inflation rates, and the number of political parties causally shape how protectionist a country's trade policy is. Using a panel of many countries spanning several decades, I will estimate the effect of each factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}. 
+exports, unemployment rates, GDP, inflation rates, and the number of political parties causally shape how protectionist a country's trade policy is. Using a panel of many countries spanning several decades, I will estimate the effect of each factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}.  
 
-\paragraph{Research Question:} \textit{Which domestic factors cause countries to adopt more protectionist trade policy, and how robust are these effects?} \\
+This project aims to answer the question \textbf{Which domestic factors cause countries to adopt more protectionist trade policies, and how robust are these effects?} by testing a variety of hypotheses regarding protectionism. \textcolor{red}{Write a few sentences on why each is expected and the alternate is not expected} 
 
-\noindent This analysis aims to build upon prior analyses such as \textcolor{red}{\citep{Ehrlich2007} and similar, CITE}. Prior analyses have used linear regression to evaluate the causes of protectionism. I propose to use double machine learning to validate the results of \textcolor{red}{\citep{Ehrlich2007}  and similar, CITE}, creating a second avenue to test causal relationships in political science. \\
+\paragraph{H1 (Exports): } Exports being a higher percentage of GDP \textcolor{red}{increases/decreases -- which makes more sense?} protectionism. 
 
-\noindent This analysis aims to test the following hypotheses: \textcolor{red}{write a little more on why each is expected and why alternate would not be expected}
+\paragraph{H2 (Umeployment):} Increased unemployment rates cause increased protectionism.
 
-\begin{hypothesis}[Exports]
-Exports being a higher percentage of GDP \textcolor{red}{increases/decreases -- which makes more sense?} protectionism. 
-\end{hypothesis}
+\paragraph{H3 (GDP per Capita):} Increases in GDP per capita causes increased protectionism
 
-\begin{hypothesis}[Unemployment]
-Increased unemployment rates cause increased protectionism.
-\end{hypothesis}
+\paragraph{H4 (Total GDP in US\$):} A higher total GDP causes increased protectionism. 
 
-\begin{hypothesis}[GDP]
-Increased GDP per capita and total GPD in US\$ \textcolor{red}{I have data for both -- combine or separate into two hypotheses?} cause \textcolor{red}{increased or decreased?} protectionism.
-\end{hypothesis} 
+\paragraph{H5 (Inflation):} Increased inflation rates cause increased protectionism.
 
-\begin{hypothesis}[Inflation]
-Increased inflation rates cause increased protectionism.
-\end{hypothesis} 
-
-\begin{hypothesis}[Number of Political Parties]
-More political parties causes increased protectionism
-\end{hypothesis} 
+\paragraph{H6 (Number of Political Parties):} More political parties causes increased protectionism. \\
 
 \noindent For the sake of this analysis, the level of protectionism will be quantified using tariff rates \textcolor{red}{explain why this is a reasonable thing to do.} In other words, higher tariff rates mean higher levels of protectionism, and vice versa. 
 
-%%%%%%%%%%%%%%%% Sources %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%  Prior Work  %%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Proposed Sources}
 
-\subsection{Access to Protection: Domestic Institutions and Trade Policy in Democracies \citep{Ehrlich2007} } 
+\section{Prior Work}
 
-Sean Ehrlich's 2007 paper ``Access to Protection: Domestic Institutions and Trade Policy in Democracies'' tests various hypotheses regarding the causes of protectionism. He hypothesizes that more electoral districts, more political parties, low party discipline, bicameralism, presidentialism, and left-wing governments all lead towards increased protectionism. Using linear regression, Ehrlich determined that all hypotheses were true, except for the hypothesis that bicameralism causes increased protectionism, which was found false. \textcolor{red}{What about low party discipline? Not in class notes --> check paper itself.} Ehrlich also discusses access points, which refer to a policymaker susceptible to lobbying. Ehrlich argues that an increase in access points leads to an increase in protectionism. 
+%%%%%%%%%%%%%%%%  Methods/Progress  %%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\textcolor{red}{Possibly: Trade Protectionism: Reasons and Outcomes \citep{Abboushi2010}}}
+\section{Proposed Methods and Current Progress} 
 
-\subsection{\textcolor{red}{Another similar paper to Ehrlich, find one}}
+\noindent \textcolor{red}{Explain DML in detail, say how it works, which algorithms specifically, why those algorithms (likely random forest and neural networks). Make an argument for why DML instead of regression.}  
 
-\subsection{\textcolor{red}{Double ML paper \citep{DML}, also maybe python documentation}}
-
-\subsection{\textcolor{red}{Possibly: Why Trade, and What Would be the Consequences of Protectionism? \citep{JeanReshef2017}}}
-
-%%%%%%%%%%%%%%%% Existing Analysis  %%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Existing Analysis}
-
-\textcolor{red}{More in depth summary of Ehrlich2007 and similar papers} 
-
-%%%%%%%%%%%%%%%% Data and Methods %%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Proposed Data and Methods}
-
-Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} were obtained from World Bank Group, and data on the number of political parties \citep{NoPartiesData} was obtained from Varieties of Democracy \textcolor{red}{Re-word this, sounds ridiculous since all the citations show where the data comes from.} The required data reduction and cleaning is complete. A simple Python program \textcolor{red}{CITE and/or link to my GitHub} was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in table 1. \\
+Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} and the number of political parties \citep{NoPartiesData} have been obtained, and the required data reduction and cleaning is complete. A simple Python program \textcolor{red}{link to my GitHub} was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in table 1. \\
 
 \begin{center}
 \begin{table}[h]
@@ -94,23 +66,31 @@ ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\
 \end{table}
 \end{center}
 
-\noindent \textcolor{red}{Explain DML in detail, say how it works, which algorithms specifically, why those algorithms (likely random forest and neural networks)}  
+%%%%%%% Preliminary Results %%%%%%%%%%
+
+\begin{center}
+\begin{table}[h]
+\makebox[\textwidth]{
+\begin{tabular}{c c c c c c c}
+\hline\hline
+Parameter & coef & std err & t & P > |t| & 2.5 \% & 97.5 \% \\ [0.5ex]
+\hline
+Exports & -0.0227 & 0.00962 & -2.363 & 0.0181 & -0.0416 & -0.00388 \\
+Unemployment & 0.0279 & 0.0511 & 0.546 & 0.585 & -0.0722 & 0.128 \\ 
+GDP/Capita & -3.898 & 8.559e-6 & -4.554 & 5.254e-6 & -5.483e-5 & -2.221e-5 \\
+GDP (US\$) & -2.473e-13 & 0.00153 & -1.610 & 0.107 &  -5.483e-13 & 5.375e-14 \\ 
+Inflation & -5.581e-4 & 0.00153 & -0.366 & 0.715 & -0.00355 & 0.00243 \\
+Number of Parties & 0.0679 & 0.0725 & 0.936 & 0.350 & -0.0743 & 0.210 \\
+\hline
+\end{tabular} }
+\caption{Preliminary results. A P-value less than 0.5 shows a statistically significant causal relationship.}
+\end{table}
+\end{center}
 
 
+%%%%%%%%%%%%%%%%  Impacts of Protectionism  %%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-%%%%%%%%%%%%%%%% Preliminary Results %%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Preliminary Results}
-
-%%%%%%%%%%%%%%%% Impacts of Protectionism  %%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Impact of Protectionism}
-
-%%%%%%%%%%%%%%%% Conclusion  %%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Conclusion}
+\section{Impacts of Protectionism} 
 
 %%%%%%%%%%%%%%%% Notes %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -120,11 +100,8 @@ ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\
 	\item Check DML Paper citation --> May be linking to ArXiv, find actual publication if so
 	\item Is JeanReshef2017 peer reviewed? Double check.
 	\item Check years for World Bank data and V-Dem data 
-	\item This will be more than 3 pages --> check with Prof. Toloudis. 
-	\begin{itemize}
-		\item Maybe can cut sections on impact of protectionism and causes of protectionism since those will be summarized throughout section 2. 
-	\end{itemize}
 \end{itemize}
+
 
 %%%%%%%%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%
 
