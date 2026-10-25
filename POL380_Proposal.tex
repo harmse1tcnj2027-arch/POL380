@@ -1,19 +1,53 @@
-\documentclass[11pt, letterpaper]{article}
+\documentclass[11pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\setlength{\topmargin}{-20mm}
+\addtolength{\textheight}{5cm}
+\setlength{\textwidth}{15cm}
+\addtolength{\oddsidemargin}{-1.5cm}
+\setlength{\parindent}{1cm}
+\def\baselinestretch{1}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage[labelfont=bf]{caption}
 
-\usepackage[proposal]{POL380}   % paper: [paper]
-\usepackage{natbib} % For bibliography 
+\usepackage[dvipsnames,table]{xcolor}
+\definecolor{text}{HTML}{181714}
+\definecolor{accent}{HTML}{5A7370}
 
-%%%%%%%%%%%%%%%% Title and Heading  %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{natbib} % or authoryear
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % False for boxed links, True for colored text
+    linkcolor=accent,        % Color of internal links (sections, equations)
+    citecolor=accent,        % Color of your library/citation links
+    urlcolor=accent         % Color of external URLs
+}
 
-\papertitle{Identifying the Causes of Protectionism using Double Machine Learning }
-\paperauthor{Emily Harms}
-\paperaffil{The College of New Jersey}
-\paperdate{\today}
+
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\Large\bfseries} % Title style
+  {\thesection}                % Section number
+  {1em}                        % Space between number and text
+  {}                           % Code before title text
+  [\titlerule]
+  
+  %%%%%%%%%%%%%%%%%%%% Document Starts Here %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\maketitle
 
-%%%%%%%%%%%%%%%%  Topic Description  %%%%%%%%%%%%%%%%%%%%%%%
+\color{text}{\noindent\rule{\linewidth}{1pt}
+
+\begin{center}
+{\huge\bf Identifying Causes of Protectionism Using Double Machine Learning} \\
+\vspace{3mm}
+\textcolor{accent}{\large Emily Harms  \textperiodcentered \hspace{1pt}  POL380 Paper Proposal} 
+
+\noindent\rule{\linewidth}{1pt}
+\end{center}
 
 \section{Proposed Topic}
 
@@ -45,9 +79,13 @@ This project aims to answer the question \textbf{Which domestic factors cause co
 
 \section{Proposed Methods and Current Progress} 
 
-\noindent \textcolor{red}{Explain DML in detail, say how it works, which algorithms specifically, why those algorithms (likely random forest and neural networks). Make an argument for why DML instead of regression.}  
+\textcolor{red}{This is summarizing the youtube series on DML (the green one that pops up when you google double machine learning youtube). Find the FWL Theorem paper and check this info against it, then cite FWL).} \\
 
-Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} and the number of political parties \citep{NoPartiesData} have been obtained, and the required data reduction and cleaning is complete. A simple Python program \textcolor{red}{link to my GitHub} was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in table 1. \\
+Double Machine Learning (DML) is based on the Frisch-Waugh-Lovell (FWL) Theorem, which says that interactions between variables can be combatted using multiple linear regression analyses. First, regress the treatment parameter $D$ on the independent variable you'd like to test ($X_{T}$) to find the treatment residual ($r_T$). Then, regress the outcome ($Y$) on the nuisance variables ($X_{N}$) to obtain the nuisance residual ($r_N$), giving you the variation of the outcome independent of $X_T$. Finally, regress $r_N$ on $r_T$. \textcolor{red}{What does this last regression give you?} DML takes the FWL Theorem a step further, expanding it beyond linear relationships. DML replaces linear regression with any machine learning algorithm \textcolor{red}{I believe it's usually neural networks or random forest regressors -- why these two and explain them.} This enables the FWL process to be used on models in which the variables are not related linearly.  
+
+\textcolor{red}{Add a paragraph on how prior analyses use linear regression. Mention the assumption about linear relationships and use as justification for DML. Also I don't think Ehrlich even attempted FWL, so that's not good either.} 
+
+Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} and the number of political parties \citep{NoPartiesData} have been obtained, and the required data reduction and cleaning is complete. A simple Python program \citep{DataCleaning} was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in \textcolor{red}{table 1. figure out how to to ref command so table numbers don't get mixed up} \\
 
 \begin{center}
 \begin{table}[h]
@@ -58,13 +96,15 @@ Country & Year & \% Exports & Unemp. & GDP/Capita & GDP (US\$) & Inflation & No.
 \hline
 ALB & 1997 & 10.04 & 16.874 & 728.55 & 4.71e9 & 33.18 & 2.87 & 14.41 \\
 ALB & 2000 & 19.53 & 19.023 & 1160.42 & 6.15e9 & 0.05 & 2.87 & 11.65 \\
-... & ... & ... & ... & ... & ... & ... & ... &  \\
+... & ... & ... & ... & ... & ... & ... & ... & ...   \\
 ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\ 
 \hline
 \end{tabular} }
-\caption{Dataset that will be used for double machine learning. Country and Year are for reference \textcolor{red}{though it may be interesting to look at each country's level of protectionism over time}, year, \% exports, unemployment rate, GDP/capita, GDP in US\$, inflation rate, and number of political parties are independent variables, tariff rate is the dependent variable.}
+\caption{\centering Dataset that will be used for double machine learning. \% Exports, unemployment rate, GDP/capita, GDP in US\$, inflation rate, and number of political parties are independent variables, tariff rate is the dependent variable.}
 \end{table}
 \end{center}
+
+\textcolor{red}{Put together a model (linear model, but just to show process) and go through FWL step by step to explain. Do this just for one variable and explain the for loop. Also I hate this gap between table and next paragraph, figure out how to get rid of it.}
 
 %%%%%%% Preliminary Results %%%%%%%%%%
 
@@ -73,7 +113,7 @@ ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\
 \makebox[\textwidth]{
 \begin{tabular}{c c c c c c c}
 \hline\hline
-Parameter & coef & std err & t & P > |t| & 2.5 \% & 97.5 \% \\ [0.5ex]
+Parameter & coef & std err & t & $P > |t|$ & 2.5 \% & 97.5 \% \\ [0.5ex]
 \hline
 Exports & -0.0227 & 0.00962 & -2.363 & 0.0181 & -0.0416 & -0.00388 \\
 Unemployment & 0.0279 & 0.0511 & 0.546 & 0.585 & -0.0722 & 0.128 \\ 
@@ -83,7 +123,7 @@ Inflation & -5.581e-4 & 0.00153 & -0.366 & 0.715 & -0.00355 & 0.00243 \\
 Number of Parties & 0.0679 & 0.0725 & 0.936 & 0.350 & -0.0743 & 0.210 \\
 \hline
 \end{tabular} }
-\caption{Preliminary results. A P-value less than 0.5 shows a statistically significant causal relationship.}
+\caption{\centering Preliminary results. A P-value less than 0.05 shows a statistically significant causal relationship.}
 \end{table}
 \end{center}
 
@@ -97,7 +137,7 @@ Number of Parties & 0.0679 & 0.0725 & 0.936 & 0.350 & -0.0743 & 0.210 \\
 \section{Notes}
 
 \begin{itemize}
-	\item Check DML Paper citation --> May be linking to ArXiv, find actual publication if so
+	\item Check DML Paper citation -- May be linking to ArXiv, find actual publication if so
 	\item Is JeanReshef2017 peer reviewed? Double check.
 	\item Check years for World Bank data and V-Dem data 
 \end{itemize}
@@ -107,5 +147,8 @@ Number of Parties & 0.0679 & 0.0725 & 0.936 & 0.350 & -0.0743 & 0.210 \\
 
 \bibliographystyle{apsa-leeper}
 \bibliography{POL380_Proposal}
+
+}
+
 
 \end{document}
