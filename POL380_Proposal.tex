@@ -51,24 +51,21 @@
 
 \section{Proposed Topic}
 
-Why do some democracies protect domestic producers more than others? I aim to study whether factors such as 
-exports, unemployment rates, GDP, inflation rates, and the number of political parties causally shape how protectionist a country's trade policy is. Using a panel of many countries spanning several decades, I will estimate the effect of each factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}.  
+Why do some democracies protect domestic producers more than others? I aim to study whether factors such as exports, unemployment rates, GDP, and inflation rates causally shape how protectionist a country's trade policy is. Other analyses \textcolor{red}{CITE Ehrlich and similar} often test for the impact of interactions between firms and policymakers and domestic institutions on protectionism, while holding economic conditions constant, meaning that additional testing must be done in order to determine whether the economic conditions themselves also impact the degree of protectionism. Using a panel of many countries spanning several decades, I aim to estimate the effect of each economic factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}.  
 
-This project aims to answer the question \textbf{Which domestic factors cause countries to adopt more protectionist trade policies, and how robust are these effects?} by testing a variety of hypotheses regarding protectionism. \textcolor{red}{Write a few sentences on why each is expected and the alternate is not expected} 
+This project aims to answer the question \textbf{Which domestic factors cause countries to adopt more protectionist trade policies, and how robust are these effects?} by testing a variety of hypotheses regarding protectionism. 
 
-\paragraph{H1 (Exports): } Exports being a higher percentage of GDP \textcolor{red}{increases/decreases -- which makes more sense?} protectionism. 
+\paragraph{H1 (Exports): } Exports being a higher percentage of GDP decrease protectionism. Countries that export a significant amount of products abroad prefer other countries to keep their markets open, and worry that raising their own tariffs may lead to retaliation. 
 
-\paragraph{H2 (Umeployment):} Increased unemployment rates cause increased protectionism.
+\paragraph{H2 (Unemployment):} Increased unemployment rates cause increased protectionism. Free trade allows products to be imported from abroad, meaning that local industries may suffer, leading to high unemployment rates. Therefore, those suffering from unemployment and the firms forced to lay off workers will advocate for protectionism in order to maintain local jobs. 
 
-\paragraph{H3 (GDP per Capita):} Increases in GDP per capita causes increased protectionism
+\paragraph{H3 (GDP per Capita):} Increases in GDP per capita causes increased protectionism. \textcolor{red}{need help with this one}
 
-\paragraph{H4 (Total GDP in US\$):} A higher total GDP causes increased protectionism. 
+\paragraph{H4 (Total GDP in US\$):} A higher total GDP causes increased protectionism. Small economies are unable to produce all goods, therefore imports are essential. Larger economies are able to produce more goods domestically and can afford for trade to be closed \textcolor{red}{Is this right? Check if Ehrlich cited anything useful and look at that paper.} 
 
-\paragraph{H5 (Inflation):} Increased inflation rates cause increased protectionism.
+\paragraph{H5 (Inflation):} Increased inflation rates cause decreased protectionism. Inflation means an increase in domestic prices, and cheap imports may help keep prices low \textcolor{red}{maybe reword this}. \\
 
-\paragraph{H6 (Number of Political Parties):} More political parties causes increased protectionism. \\
-
-\noindent For the sake of this analysis, the level of protectionism will be quantified using tariff rates \textcolor{red}{explain why this is a reasonable thing to do.} In other words, higher tariff rates mean higher levels of protectionism, and vice versa. 
+\noindent For the sake of this analysis, the level of protectionism will be quantified using tariff rates. Tariffs are directly set by policymakers, meaning that changes in tariff rates directly reflect policy choices. 
 
 %%%%%%%%%%%%%%%%  Prior Work  %%%%%%%%%%%%%%%%%%%%%%%
 
