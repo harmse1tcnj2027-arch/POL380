@@ -35,6 +35,26 @@
   {}                           % Code before title text
   [\titlerule]
   
+  
+  \definecolor{dkgreen}{rgb}{0,0.6,0}
+ \definecolor{gray}{rgb}{0.5,0.5,0.5}
+ \definecolor{mauve}{rgb}{0.8,0,0.82}
+  \lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  %stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3}
+  
   %%%%%%%%%%%%%%%%%%%% Document Starts Here %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -51,9 +71,9 @@
 
 \section{Proposed Topic}
 
-Why do some democracies protect domestic producers more than others? I aim to study whether factors such as exports, unemployment rates, GDP, and inflation rates causally shape how protectionist a country's trade policy is. Other analyses \textcolor{red}{CITE Ehrlich and similar} often test for the impact of interactions between firms and policymakers and domestic institutions on protectionism, while holding economic conditions constant, meaning that additional testing must be done in order to determine whether the economic conditions themselves also impact the degree of protectionism. Using a panel of many countries spanning several decades, I aim to estimate the effect of each economic factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}.  
+Why do some democracies protect domestic producers more than others? I aim to study whether factors such as exports, unemployment rates, GDP, and inflation rates causally shape how protectionist a country's trade policy is. Other analyses \citep{Ehrlich2007, Gawande2000, HeniszMansfield2006} often test for the impact of interactions between firms and policymakers and domestic institutions on protectionism, while holding economic conditions constant, meaning that additional testing must be done in order to determine whether the economic conditions themselves also impact the degree of protectionism. Using a panel of many countries spanning several decades, I aim to estimate the effect of each economic factor using double machine learning (DML), which lets flexible learners such as random forests and neural networks estimate causal parameters in the presence of complex confounding variables \citep{DML}.  
 
-This project aims to answer the question \textbf{Which domestic factors cause countries to adopt more protectionist trade policies, and how robust are these effects?} by testing a variety of hypotheses regarding protectionism. 
+This project aims to answer the question \textbf{Which domestic economic factors cause countries to adopt more protectionist trade policies, and how robust are these effects?} by testing a variety of hypotheses regarding protectionism. 
 
 \paragraph{H1 (Exports): } Exports being a higher percentage of GDP decrease protectionism. Countries that export a significant amount of products abroad prefer other countries to keep their markets open, and worry that raising their own tariffs may lead to retaliation. 
 
@@ -63,7 +83,7 @@ This project aims to answer the question \textbf{Which domestic factors cause co
 
 \paragraph{H4 (Total GDP in US\$):} A higher total GDP causes increased protectionism. Small economies are unable to produce all goods, therefore imports are essential. Larger economies are able to produce more goods domestically and can afford for trade to be closed \textcolor{red}{Is this right? Check if Ehrlich cited anything useful and look at that paper.} 
 
-\paragraph{H5 (Inflation):} Increased inflation rates cause decreased protectionism. Inflation means an increase in domestic prices, and cheap imports may help keep prices low \textcolor{red}{maybe reword this}. \\
+\paragraph{H5 (Inflation):} Increased inflation rates cause decreased protectionism. Inflation is defined by an increase in domestic prices. Decreased protectionism allows for the importing of cheaper goods, helping to reduce prices. 
 
 \noindent For the sake of this analysis, the level of protectionism will be quantified using tariff rates. Tariffs are directly set by policymakers, meaning that changes in tariff rates directly reflect policy choices. 
 
@@ -72,17 +92,17 @@ This project aims to answer the question \textbf{Which domestic factors cause co
 
 \section{Prior Work}
 
+Prior analyses argue that politics drives protectionism, rather than economics. In the Grossman-Helpman model \citep{GH_Model}, governments weigh campaign contributions from organized industries against social welfare. \cite{Gawande2000} tested this on US non-tariff barriers across manufacturing industries and found broad support for the model. A second set of studies ask how political institutions affect these pressures. \cite{Ehrlich2007} finds that a larger number number of electoral districts, a larger number of political parties, presidentialism, and left-wing governments all cause increased protectionism. \cite{HeniszMansfield2006} focuses on how institutions change the effect of economic conditions. All of these studies focus on the impacts of interactions between lobbyists and policymakers, and/or the institutions involved. This suggests that more research needs to be done into the impact of the economic conditions themselves. Do the economic conditions that drive these interactions also have a role, or are the interactions the root cause? This project seeks to study the impact of various economic conditions on the level of protectionism. 
+
 %%%%%%%%%%%%%%%%  Methods/Progress  %%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Proposed Methods and Current Progress} 
 
-\textcolor{red}{This is summarizing the youtube series on DML (the green one that pops up when you google double machine learning youtube). Find the FWL Theorem paper and check this info against it, then cite FWL).} \\
-
-Double Machine Learning (DML) is based on the Frisch-Waugh-Lovell (FWL) Theorem, which says that interactions between variables can be combatted using multiple linear regression analyses. First, regress the treatment parameter $D$ on the independent variable you'd like to test ($X_{T}$) to find the treatment residual ($r_T$). Then, regress the outcome ($Y$) on the nuisance variables ($X_{N}$) to obtain the nuisance residual ($r_N$), giving you the variation of the outcome independent of $X_T$. Finally, regress $r_N$ on $r_T$. \textcolor{red}{What does this last regression give you?} DML takes the FWL Theorem a step further, expanding it beyond linear relationships. DML replaces linear regression with any machine learning algorithm \textcolor{red}{I believe it's usually neural networks or random forest regressors -- why these two and explain them.} This enables the FWL process to be used on models in which the variables are not related linearly.  
+Double Machine Learning (DML) is based on the Frisch-Waugh-Lovell (FWL) Theorem \citep{FrischWaugh1933, Lovell1963}, which says that interactions between variables can be combatted using multiple linear regression analyses. First, regress the treatment parameter $D$ on the independent variable you'd like to test ($X_{T}$) to find the treatment residual ($r_T$). Then, regress the outcome ($Y$) on the nuisance variables ($X_{N}$) to obtain the nuisance residual ($r_N$), giving you the variation of the outcome independent of $X_T$. Finally, regress $r_N$ on $r_T$ to obtain the multivariate regression coefficient. DML takes the FWL Theorem a step further, expanding it beyond linear relationships. DML replaces linear regression with any machine learning algorithm, enabling the FWL process to be used on models in which the variables are not related linearly.  
 
 \textcolor{red}{Add a paragraph on how prior analyses use linear regression. Mention the assumption about linear relationships and use as justification for DML. Also I don't think Ehrlich even attempted FWL, so that's not good either.} 
 
-Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} and the number of political parties \citep{NoPartiesData} have been obtained, and the required data reduction and cleaning is complete. A simple Python program \citep{DataCleaning} was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in \textcolor{red}{table 1. figure out how to to ref command so table numbers don't get mixed up} \\
+Data on tariff rates \citep{TariffData}, exports \citep{ExportData}, unemployment rates \citep{UnemploymentData}, GDP \citep{GDP_US_Data, GDPCapitaData}, and inflation \citep{InflationData} and the number of political parties \citep{NoPartiesData} have been obtained, and the required data reduction and cleaning is complete. A simple Python program (Appendix A) was written to pull the data needed from each dataset, and add the data to one large .csv file. A subset of the data is shown in table \ref{table:DMLDataset}\\
 
 \begin{center}
 \begin{table}[h]
@@ -98,10 +118,10 @@ ZMB &  2020 & 46.72 & 6.032 & 951.64 & 2.34e10 & 15.73 & 2.78 & 4.82 \\
 \hline
 \end{tabular} }
 \caption{\centering Dataset that will be used for double machine learning. \% Exports, unemployment rate, GDP/capita, GDP in US\$, inflation rate, and number of political parties are independent variables, tariff rate is the dependent variable.}
+\label{table:DMLDataset}
 \end{table}
 \end{center}
 
-\textcolor{red}{Put together a model (linear model, but just to show process) and go through FWL step by step to explain. Do this just for one variable and explain the for loop. Also I hate this gap between table and next paragraph, figure out how to get rid of it.}
 
 %%%%%%% Preliminary Results %%%%%%%%%%
 
@@ -129,16 +149,6 @@ Number of Parties & 0.0679 & 0.0725 & 0.936 & 0.350 & -0.0743 & 0.210 \\
 
 \section{Impacts of Protectionism} 
 
-%%%%%%%%%%%%%%%% Notes %%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Notes}
-
-\begin{itemize}
-	\item Check DML Paper citation -- May be linking to ArXiv, find actual publication if so
-	\item Is JeanReshef2017 peer reviewed? Double check.
-	\item Check years for World Bank data and V-Dem data 
-\end{itemize}
-
 
 %%%%%%%%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -146,6 +156,240 @@ Number of Parties & 0.0679 & 0.0725 & 0.936 & 0.350 & -0.0743 & 0.210 \\
 \bibliography{POL380_Proposal}
 
 }
+
+%%%%%%%%%%%%%%%% Appendix  %%%%%%%%%%%%%%%%%%%%%%%
+\appendix 
+
+\section{Data Cleaning Code} 
+
+\begin{lstlisting}
+# Emily Harms
+# POL380 Term Project: Causes of Protectionism
+# Clean data from various sources to get consistent/usable formatting
+
+# import required modules
+
+import pandas as pd
+import numpy as np
+
+# Start with tariff data
+
+TariffData = pd.read_csv('TariffData.csv', skiprows = 4)
+
+TariffData = TariffData.drop(columns = ['Country Name', 'Indicator Name', 'Indicator Code']) # Get rid of columns we don't need
+
+# Make a new DataFrame, where I will put the data I want to keep
+
+ProtectionismData = pd.DataFrame()
+
+# Make lists where I will store tariff data, for now
+
+countries = []
+years = []
+tariffs = []
+
+# Fill lists with tariff data
+
+for row in range(len(TariffData)):
+    for col in range(1, TariffData.shape[1]):
+        tariff = TariffData.iloc[row, col]
+        if pd.notna(tariff):
+            countries.append(TariffData.iloc[row, 0])
+            years.append(TariffData.columns[col])
+            tariffs.append(tariff)
+
+# Save data to the big dataset
+
+ProtectionismData['Country'] = countries
+ProtectionismData['Year'] = years
+ProtectionismData['Tariff'] = tariffs
+
+# Clean and add export data 
+
+ExportData = pd.read_csv('ExportData.csv', skiprows = 4)
+
+ExportPercent = []
+
+for i in range(len(ProtectionismData)):
+    code = ProtectionismData.loc[i, 'Country']
+    year = str(ProtectionismData.loc[i, 'Year'])
+    row = ExportData[ExportData['Country Code'] == code]
+    if len(row)>0 and year in ExportData.columns:
+        ExportPercent.append(row[year].iloc[0])
+    else:
+        ExportPercent.append(np.nan)
+
+ProtectionismData['Exports'] = ExportPercent
+
+ProtectionismData = ProtectionismData.dropna(subset = ['Exports']).reset_index(drop=True)
+
+# Clean and add unemployment data
+
+UnemploymentData = pd.read_csv('UnemploymentData.csv', skiprows = 4)
+
+UnemploymentPercent = []
+
+for i in range(len(ProtectionismData)):
+    code = ProtectionismData.loc[i, 'Country']
+    year = str(ProtectionismData.loc[i, 'Year'])
+    row = UnemploymentData[UnemploymentData['Country Code'] == code]
+    if len(row)>0 and year in UnemploymentData.columns:
+        UnemploymentPercent.append(row[year].iloc[0])
+    else:
+        UnemploymentPercent.append(np.nan)
+
+ProtectionismData['Unemployment'] = UnemploymentPercent
+
+ProtectionismData = ProtectionismData.dropna(subset = ['Unemployment']).reset_index(drop=True)
+
+# Clean and add GDP per capita data
+
+GDPCapitaData = pd.read_csv('GDPData.csv', skiprows = 4)
+
+GDPCapita = []
+
+for i in range(len(ProtectionismData)):
+    code = ProtectionismData.loc[i, 'Country']
+    year = str(ProtectionismData.loc[i, 'Year'])
+    row = GDPCapitaData[GDPCapitaData['Country Code'] == code]
+    if len(row)>0 and year in GDPCapitaData.columns:
+        GDPCapita.append(row[year].iloc[0])
+    else:
+        GDPCapita.append(np.nan)
+
+ProtectionismData['GDP_PerCapita'] = GDPCapita
+
+ProtectionismData = ProtectionismData.dropna(subset = ['GDP_PerCapita']).reset_index(drop=True)
+
+# Clean and add GDP in US$ data
+
+GDP_USData = pd.read_csv('GDP_US.csv', skiprows = 4)
+
+GDP_US = []
+
+for i in range(len(ProtectionismData)):
+    code = ProtectionismData.loc[i, 'Country']
+    year = str(ProtectionismData.loc[i, 'Year'])
+    row = GDP_USData[GDP_USData['Country Code'] == code]
+    if len(row)>0 and year in GDP_USData.columns:
+        GDP_US.append(row[year].iloc[0])
+    else:
+        GDP_US.append(np.nan)
+
+ProtectionismData['GDP_US'] = GDP_US
+
+ProtectionismData = ProtectionismData.dropna(subset = ['GDP_US']).reset_index(drop=True)
+
+# Clean and add inflation data
+
+InflationData = pd.read_csv('InflationData.csv', skiprows = 4)
+
+Inflation  = []
+
+for i in range(len(ProtectionismData)):
+    code = ProtectionismData.loc[i, 'Country']
+    year = str(ProtectionismData.loc[i, 'Year'])
+    row = InflationData[InflationData['Country Code'] == code]
+    if len(row)>0 and year in InflationData.columns:
+        Inflation.append(row[year].iloc[0])
+    else:
+        Inflation.append(np.nan)
+
+ProtectionismData['Inflation'] = Inflation
+
+ProtectionismData = ProtectionismData.dropna(subset = ['Inflation']).reset_index(drop=True)
+
+# Clean and add protectionism data
+# NOTE: this is not world bank data, so structure is a bit different
+
+PartyData = pd.read_csv('NoParties.csv', delimiter = ';', decimal = ',')
+
+NoParties = []
+
+for i in range(len(ProtectionismData)):
+    code = ProtectionismData.loc[i, 'Country']
+    year = int(ProtectionismData.loc[i, 'Year'])
+
+    match = PartyData[(PartyData['ccodealp'] == code) & (PartyData['year'] == year)]
+
+    if len(match) > 0:
+        NoParties.append(match['gol_enep'].iloc[0])
+    else:
+        NoParties.append(np.nan)
+
+ProtectionismData['NoParties'] = NoParties
+ProtectionismData = ProtectionismData.dropna(subset=['NoParties']).reset_index(drop=True)
+
+# Save everything to a single csv file
+
+ProtectionismData.to_csv('ProtectionismDataset.csv') 
+\end{lstlisting}
+
+\section{Preliminary DML Code}
+
+\begin{lstlisting}
+# Emily Harms
+# POL380 Term Project: Causes of Protectionism
+# Double Machine learning
+
+# NOTES
+
+# Oct 22
+# Results differ every time (as usual for ML) --> Probably a good idea to do bootstrapping (I will add this for final paper, is ok for now since just proposal)
+
+# Oct 28
+# Remove number of political parties --> will focus on economic factors
+# Need to figure out how to control for social interactions 
+
+# import required modules
+
+import doubleml as dml
+from sklearn.ensemble import RandomForestRegressor
+import pandas as pd
+
+
+# Import the data
+
+data = pd.read_csv('ProtectionismDataset.csv')
+
+data.pop('Country') # Ditch country and year since I don't want them impacting results 
+data.pop('Year') 
+
+# Define independent and dependent variables 
+
+dep_var = 'Tariff'
+
+ind_vars = ['Exports', 'Unemployment', 'GDP_PerCapita', 'GDP_US', 'Inflation', 'NoParties']
+
+results = {} # dictionary for storage
+
+# Loop through independent variables
+
+for var in ind_vars:
+    measured_var = var
+    other_vars = [v for v in ind_vars if v != measured_var]
+
+    dml_data = dml.DoubleMLData(data, y_col = dep_var, d_cols = measured_var, x_cols = other_vars) # Create data structure
+
+    # define nuisance learners with Random Forest
+    #Figure out what parameters make sense 
+    learner_l = RandomForestRegressor(n_estimators=100, max_depth=5, random_state=42) # predicting target from controls
+    learner_m = RandomForestRegressor(n_estimators=100, max_depth=5, random_state=42) # predict treatment from controls 
+
+    # Partial Linear Regression Model 
+    dml_plr = dml.DoubleMLPLR(dml_data, ml_l = learner_l, ml_m = learner_m, n_folds = 5) 
+    dml_plr.fit()
+
+    results[measured_var] = dml_plr.summary
+
+# Combine results into a single DataFrame
+
+resultsDF = pd.concat(results)
+
+resultsDF.to_csv('DML_Results.csv')
+\end{lstlisting}
+
+
 
 
 \end{document}
